@@ -112,15 +112,55 @@ class Meta
      * @param $edad         nueva descripcion 
      * @return PDOStatement
      */
-    public static function Nuevo_Dato($fecha, $hora, $co2, $humo, $alcohol, $temp, $humedad, $latitud, $longitud)
+    public static function Nuevo_Usuario($nombre, $apellido, $correo, $clave)
     {        
         // Sentencia INSERT
-        $comando = "INSERT INTO sensores (fecha, hora, co2, humo, alcohol, temperatura, humedad, latitud, longitud) VALUES (?,?,?,?,?,?,?,?,?)";
+        $comando = "INSERT INTO usuarios (nombre, apellido, correo, clave) VALUES (?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($fecha, $hora, $co2, $humo, $alcohol, $temp, $humedad, $latitud, $longitud));
+        return $sentencia->execute(array($nombre, $apellido, $correo, $clave));
+
+    }
+
+    /**
+     * Insertar una nueva meta
+     *
+     * @param $id_test      identificador
+     * @param $nombre       nuevo titulo
+     * @param $edad         nueva descripcion 
+     * @return PDOStatement
+     */
+    public static function Nuevo_Dato($id_vehiculo, $latitud, $longitud, $fecha, $hora)
+    {        
+        // Sentencia INSERT
+        $comando = "INSERT INTO datos (id_vehiculo, latitud, longitud, fecha, hora) VALUES (?,?,?,?,?)";
+
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+        return $sentencia->execute(array($id_vehiculo, $latitud, $longitud, $fecha, $hora));
+
+    }
+
+    /**
+     * Insertar una nueva meta
+     *
+     * @param $id_test      identificador
+     * @param $nombre       nuevo titulo
+     * @param $edad         nueva descripcion 
+     * @return PDOStatement
+     */
+    public static function Nuevo_Vehiculo($vehiculo, $placa, $color)
+    {        
+        // Sentencia INSERT
+        $comando = "INSERT INTO vehiculos (vehiculo, placa, color) VALUES (?,?,?)";
+
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+        return $sentencia->execute(array($vehiculo, $placa, $color));
 
     }
 
