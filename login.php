@@ -1,7 +1,8 @@
 <?php 
 
 $datos = $_REQUEST;
-$respuesta = array();
+
+$respuesta = [];
 
 require 'php/meta.php';
 
