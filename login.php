@@ -2,7 +2,7 @@
 
 $datos = $_REQUEST;
 
-$respuesta = [];
+$respuesta = array();
 
 require 'php/meta.php';
 
